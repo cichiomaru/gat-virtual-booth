@@ -1,0 +1,14 @@
+{
+    "name": "LabGAT.SceneTransition",
+    "rootNamespace": "LabGAT.SceneTransition",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
