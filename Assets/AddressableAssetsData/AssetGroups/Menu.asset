@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Menu
+  m_EditorClassIdentifier: 
+  m_GroupName: Menu
+  m_Data:
+    m_SerializedData: []
+  m_GUID: ebf41d0e77a46ea4c959d684e0cc71c6
+  m_SerializeEntries:
+  - m_GUID: 2ad793183ec997046b97a8aa9421b864
+    m_Address: Assets/Apps/Prefabs/Menu/Setting.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - menu
+  - m_GUID: 7659d90d3c77b074b83db918de1a1cb5
+    m_Address: Assets/Apps/Prefabs/Menu/Achievement.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - menu
+  - m_GUID: 1514aa1e9c5851549acfd18afacbd568
+    m_Address: Assets/Apps/Prefabs/Menu/Quest Taken.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - menu
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d7496dd85ad3746459e2d1cda9b45e67, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cb125251ecb1bc549959810325bcf4a7, type: 2}
+    - {fileID: 11400000, guid: 86655ec114911f8428c0e5f53aef945a, type: 2}
