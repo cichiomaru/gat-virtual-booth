@@ -10,8 +10,10 @@ namespace GATVirtualBooth.AssetVerification
 
         private async void OnStart()
         {
-            //Caching.ClearCache();
+            Caching.ClearCache();
+
             await ResourceManager.InitializeAddressables();
+
 
             await ResourceManager.CatalogCheck();
             await ResourceManager.CatalogUpdate();
