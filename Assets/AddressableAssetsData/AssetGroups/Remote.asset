@@ -10,28 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Menu
+  m_Name: Remote
   m_EditorClassIdentifier: 
-  m_GroupName: Menu
+  m_GroupName: Remote
   m_Data:
     m_SerializedData: []
   m_GUID: ebf41d0e77a46ea4c959d684e0cc71c6
   m_SerializeEntries:
-  - m_GUID: 2ad793183ec997046b97a8aa9421b864
-    m_Address: Assets/Apps/Prefabs/Menu/Setting.prefab
+  - m_GUID: c46564b9680adb34c9880a57273bb0d8
+    m_Address: Unity-Chan
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - menu
-  - m_GUID: 7659d90d3c77b074b83db918de1a1cb5
-    m_Address: Assets/Apps/Prefabs/Menu/Achievement.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - menu
-  - m_GUID: 1514aa1e9c5851549acfd18afacbd568
-    m_Address: Assets/Apps/Prefabs/Menu/Quest Taken.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - menu
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d7496dd85ad3746459e2d1cda9b45e67, type: 2}
   m_SchemaSet:
