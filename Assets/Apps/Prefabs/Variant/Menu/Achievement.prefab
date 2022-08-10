@@ -398,7 +398,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 987378323}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5462451
+  m_Size: 0.11402071
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1480,7 +1480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2887397453840698049, guid: 457f08ea50eff174292e81211685f29f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2887397453840698049, guid: 457f08ea50eff174292e81211685f29f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1516,7 +1516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2887397453840698049, guid: 457f08ea50eff174292e81211685f29f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 74.999985
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2887397453840698049, guid: 457f08ea50eff174292e81211685f29f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1545,6 +1545,24 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2887397453147563469, guid: 457f08ea50eff174292e81211685f29f, type: 3}
   m_PrefabInstance: {fileID: 2400100702398180413}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &674632232665687803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2887397453840698054, guid: 457f08ea50eff174292e81211685f29f, type: 3}
+  m_PrefabInstance: {fileID: 2400100702398180413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5500474701186883785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674632232665687803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed74982771b34d42b3716ca924ce48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: achievement
 --- !u!1001 &8604087025147802170
 PrefabInstance:
   m_ObjectHideFlags: 0
