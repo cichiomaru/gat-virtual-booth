@@ -23,8 +23,13 @@ namespace GATVirtualBooth.AssetVerification
             AssetVerification.OnConnectionAvailable += ShowOnConnectionAvailable;
             AssetVerification.OnConnectionUnavailable += ShowOnConnectionUnavailable;
             AssetVerification.OnDownloadNeeded += ShowOnDownloadNeeded;
+
+            ResourceManager.UpdateBundleStarted += ShowDownloadProgress;
+            ResourceManager.UpdateBundleProgress += UpdateProgressBar;
+            //ResourceManager.UpdateBundleFailed
+            ResourceManager.UpdateBundleCompleted += ShowDownloadCompleted;
         }
-        
+
         private void OnDisable()
         {
             AssetVerification.InitializingAddressables -= ShowInitializingMessage;
@@ -32,41 +37,67 @@ namespace GATVirtualBooth.AssetVerification
             AssetVerification.OnConnectionAvailable -= ShowOnConnectionAvailable;
             AssetVerification.OnConnectionUnavailable -= ShowOnConnectionUnavailable;
             AssetVerification.OnDownloadNeeded -= ShowOnDownloadNeeded;
+
+            ResourceManager.UpdateBundleStarted -= ShowDownloadProgress;
+            ResourceManager.UpdateBundleProgress -= UpdateProgressBar;
+            //ResourceManager.UpdateBundleFailed
+            ResourceManager.UpdateBundleCompleted -= ShowDownloadCompleted;
         }
 
         private void Start()
         {
-            Hide(loadingBar.gameObject);
+            HideDownloadProgress();
         }
 
-        private void ShowMessage(string message)
+        private void ShowDownloadCompleted()
+        {
+            SetMessage($"Download completed.");
+        }
+
+        private void UpdateProgressBar(float percent)
+        {
+            loadingBar.value = percent;
+            loadingProgress.text = $"{percent * 100}%";
+        }
+
+        private void SetMessage(string message)
         {
             messageText.text = message;
         }
 
-        private async void ShowOnDownloadNeeded()
+        private void ShowDownloadProgress()
         {
-            ShowMessage($"Updating game assets ...");
+            Show(loadingBar.gameObject);
+        }
+
+        private void HideDownloadProgress()
+        {
+            Hide(loadingBar.gameObject);
+        }
+
+        private void ShowOnDownloadNeeded()
+        {
+            SetMessage($"Updating game assets ...");
         }
 
         private void ShowOnConnectionUnavailable()
         {
-            ShowMessage($"Connection unavailable");
+            SetMessage($"Connection unavailable");
         }
 
         private void ShowOnConnectionAvailable()
         {
-            ShowMessage($"Checking bundle version ...");
+            SetMessage($"Checking bundle version ...");
         }
 
         private void ShowCheckingCatalogMessage()
         {
-            ShowMessage($"Establish connection ...");
+            SetMessage($"Establish connection ...");
         }
         
         private void ShowInitializingMessage()
         {
-            ShowMessage($"Initializing ...");
+            SetMessage($"Initializing ...");
         }
 
         public void Hide(GameObject obj)

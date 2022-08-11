@@ -20,9 +20,10 @@ namespace GATVirtualBooth
         private static List<string> primaryKeys = new List<string>();
 
         //addressables initialization action
-        private static event Action<float> DownloadProgress;
-        private static event Action DownloadAssetFailed;
-        private static event Action DownloadCompleted;
+        public static event Action<float> UpdateBundleProgress;
+        public static event Action UpdateBundleFailed;
+        public static event Action UpdateBundleStarted;
+        public static event Action UpdateBundleCompleted;
 
         public static async Task InitializeAddressables()
         {
@@ -116,21 +117,23 @@ namespace GATVirtualBooth
 
         public static async Task UpdateBundle()
         {
+            UpdateBundleStarted?.Invoke();
+
             var downloadHandle = Addressables.DownloadDependenciesAsync(primaryKeys, Addressables.MergeMode.Union, false);
 
             while (!downloadHandle.IsDone)
             {
-                DownloadProgress?.Invoke(downloadHandle.GetDownloadStatus().Percent);
+                UpdateBundleProgress?.Invoke(downloadHandle.GetDownloadStatus().Percent);
                 await Task.Yield();
             }
 
             if (downloadHandle.Status != AsyncOperationStatus.Succeeded)
             {
-                DownloadAssetFailed?.Invoke();
+                UpdateBundleFailed?.Invoke();
                 return;
             }
 
-            DownloadCompleted?.Invoke();
+            UpdateBundleCompleted?.Invoke();
             Release(downloadHandle);
         }
 

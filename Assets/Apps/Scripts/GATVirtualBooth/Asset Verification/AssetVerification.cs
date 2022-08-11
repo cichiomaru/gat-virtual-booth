@@ -33,7 +33,8 @@ namespace GATVirtualBooth.AssetVerification
         {
             GameObject updateConfirmationPoUp = await ResourceManager.InstantiateObject("UI/Pop Up/Bundle Update Confirmation.prefab");
             UpdateConfirmationPopUp updateConfirmationPopUp = updateConfirmationPoUp.GetComponent<UpdateConfirmationPopUp>();
-            updateConfirmationPopUp.SetMessage($"Download additional file for {FileSize.ToMB(downloadSize)} MB?");
+            
+            updateConfirmationPopUp.SetMessage($"Download additional file for {FileSize.ToMB(downloadSize).ToString("N2")} MB?");
         }
 
         private async Task BundleCheck()
@@ -58,6 +59,12 @@ namespace GATVirtualBooth.AssetVerification
                 Debug.Log($"Cannot connect to host!");
             }
         }
+        
+        private async void GoToMainMenu()
+        {
+            await Task.Delay(1000);
+            //load next scene
+        }
 
         private void Start()
         {
@@ -66,12 +73,12 @@ namespace GATVirtualBooth.AssetVerification
 
         private void OnEnable()
         {
-
+            ResourceManager.UpdateBundleCompleted += GoToMainMenu;
         }
 
         private void OnDisable()
         {
-
+            ResourceManager.UpdateBundleCompleted -= GoToMainMenu;
         }
     }
 }

@@ -13,22 +13,21 @@ namespace GATVirtualBooth.AssetVerification
         [SerializeField] private Button yesButton;
         [SerializeField] private Button noButton;
 
-        public event Action YesPressed;
-        public event Action NoPressed;
-
         private void Awake()
         {
             yesButton.onClick.AddListener(OnYesPressed);
             noButton.onClick.AddListener(OnNoPressed);
         }
-        private void OnYesPressed()
+
+        private async void OnYesPressed()
         {
-            YesPressed?.Invoke();
+            Hide(gameObject);
+            await ResourceManager.UpdateBundle();
         }
 
         private void OnNoPressed()
         {
-            NoPressed?.Invoke();
+
         }
 
         public void SetMessage(string message)
