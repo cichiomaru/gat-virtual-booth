@@ -4,12 +4,18 @@ using UnityEngine;
 
 namespace GATVirtualBooth.Game
 {
-    public class QuestTakenUI : Widget
+    public class QuestTakenUI : IWidget
     {
+        public string Path => "";
 
-        private void Start()
+        public void Hide()
         {
-            Hide();
+            throw new System.NotImplementedException();
+        }
+
+        public void Show()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

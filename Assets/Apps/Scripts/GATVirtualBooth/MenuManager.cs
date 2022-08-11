@@ -12,8 +12,8 @@ namespace GATVirtualBooth
         public static MenuManager Instance;
         [SerializeField] Transform parent;
 
-        private Dictionary<string, Widget> widgetList;
-        private Stack<Widget> widgetStack;
+        private Dictionary<string, IWidget> widgetList;
+        private Stack<IWidget> widgetStack;
 
         private Func<string, int> NumberSet;
 
@@ -28,8 +28,8 @@ namespace GATVirtualBooth
                 Destroy(gameObject);
             }
 
-            widgetList = new Dictionary<string, Widget>();
-            widgetStack = new Stack<Widget>();
+            widgetList = new Dictionary<string, IWidget>();
+            widgetStack = new Stack<IWidget>();
 
             GetAllWidget();
 
@@ -62,9 +62,10 @@ namespace GATVirtualBooth
         
         private void GetAllWidget()
         {
-            foreach(var widget in FindObjectsOfType<Widget>())
+            foreach(var obj in FindObjectsOfType<GameObject>())
             {
-                widgetList.Add(widget.path, widget);
+                IWidget widget = obj.GetComponent<IWidget>();
+                widgetList.Add(widget.Path, widget);
             }
         }
     }

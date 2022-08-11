@@ -112,7 +112,7 @@ namespace GATVirtualBooth
         public static async Task<long> GetDownloadSize()
         {
             RetrievePrimaryKey();
-            primaryKeys.ForEach((e) => Debug.Log($"key: {e}"));
+
             var downloadSizeHandle = Addressables.GetDownloadSizeAsync(primaryKeys);
             await downloadSizeHandle.Task;
 
