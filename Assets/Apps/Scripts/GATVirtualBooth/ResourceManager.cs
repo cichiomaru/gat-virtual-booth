@@ -11,10 +11,15 @@ namespace GATVirtualBooth
 {
     public static class ResourceManager
     {
+        //addressables ops
+        private static Dictionary<string, AsyncOperationHandle> instantiatedUniqueObjects = new Dictionary<string, AsyncOperationHandle>();
+
+        //addressables initialization
         private static List<string> updatableCatalog = new List<string>();
         private static List<IResourceLocator> updatedResourceLocator = new List<IResourceLocator>();
         private static List<string> primaryKeys = new List<string>();
 
+        //addressables initialization action
         private static event Action<float> DownloadProgress;
         private static event Action DownloadAssetFailed;
         private static event Action DownloadCompleted;
@@ -127,6 +132,21 @@ namespace GATVirtualBooth
 
             DownloadCompleted?.Invoke();
             Release(downloadHandle);
+        }
+
+        public static async Task InstantiateObject(string path)
+        {
+            var objectHandle = Addressables.InstantiateAsync(path);
+            await objectHandle.Task;
+
+            if (objectHandle.Status == AsyncOperationStatus.Succeeded)
+            {
+                instantiatedUniqueObjects.Add(path, objectHandle);
+            }
+            else
+            {
+                Debug.Log($"Fail to instantiate object: {path}");
+            }
         }
     }
 }
