@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GATVirtualBooth.AssetVerification
 {
@@ -16,7 +17,7 @@ namespace GATVirtualBooth.AssetVerification
 
         private async void OnStart()
         {
-            Caching.ClearCache();
+            //Caching.ClearCache();
 
             await BundleCheck();
 
@@ -26,6 +27,10 @@ namespace GATVirtualBooth.AssetVerification
             {
                 OnDownloadNeeded?.Invoke();
                 ShowUpdatePopUp(downloadSize);
+            }
+            else
+            {
+                GoToMainMenu();
             }
         }
 
@@ -64,6 +69,7 @@ namespace GATVirtualBooth.AssetVerification
         {
             await Task.Delay(1000);
             //load next scene
+            await ResourceManager.LoadScene("Scenes/Main Menu.unity", LoadSceneMode.Single);
         }
 
         private void Start()

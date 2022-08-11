@@ -67,7 +67,7 @@ MonoBehaviour:
         m_Value: http://[PrivateIpAddress]:[HostingServicePort]
     - m_InheritedParent: 
       m_Id: fd164cc38e95d4448a9f2ae6bf25b556
-      m_ProfileName: CCD Unity
+      m_ProfileName: CCD Android
       m_Values:
       - m_Id: f0317bec7a76833478a978acfa6a3374
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
@@ -76,9 +76,9 @@ MonoBehaviour:
       - m_Id: 016f1f480366ed64bb7192cb97c46c31
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: d6b9397837176174b8229229fd926ec5
-        m_Value: ServerData/[BuildTarget]
+        m_Value: CCDBuildData/603ee106-df74-40e4-97a9-257b136e0325/latest
       - m_Id: ee3c2bd8526bacc4e89797ab3709108d
-        m_Value: 'https://a10c2708-df9b-46b0-a163-2ec7819967c6.client-api.unity3dusercontent.com/client_api/v1/environments/production/buckets/f23bc8fa-5bbb-4721-9d7b-c14a3dbc5460/release_by_badge/latest/entry_by_path/content/?path= '
+        m_Value: https://a10c2708-df9b-46b0-a163-2ec7819967c6.client-api.unity3dusercontent.com/client_api/v1/buckets/603ee106-df74-40e4-97a9-257b136e0325/release_by_badge/latest/entry_by_path/content/?path=
     m_ProfileEntryNames:
     - m_Id: f0317bec7a76833478a978acfa6a3374
       m_Name: BuildTarget
@@ -115,35 +115,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad9e923eda2116340add4fe51b848bf0, type: 2}
   m_ActiveProfileId: fd164cc38e95d4448a9f2ae6bf25b556
   m_HostingServicesManager:
-    m_HostingServiceInfos:
-    - classRef: UnityEditor.AddressableAssets.HostingServices.HttpHostingService,
-        Unity.Addressables.Editor
-      dataStore:
-        m_SerializedData:
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.Int32
-          m_Data: 2547
-          m_Key: HostingServicePort
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.Int32
-          m_Data: 0
-          m_Key: HostingServiceUploadSpeed
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.String
-          m_Data: Library/com.unity.addressables/aa/Android/Android;ServerData/Android
-          m_Key: ContentRoot
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.Boolean
-          m_Data: True
-          m_Key: IsEnabled
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.String
-          m_Data: Local Hosting
-          m_Key: DescriptiveName
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.Int32
-          m_Data: 0
-          m_Key: InstanceId
+    m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}
     m_NextInstanceId: 1
     m_RegisteredServiceTypeRefs:

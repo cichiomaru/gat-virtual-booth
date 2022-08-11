@@ -6,6 +6,8 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
 
 namespace GATVirtualBooth
 {
@@ -13,6 +15,7 @@ namespace GATVirtualBooth
     {
         //addressables ops
         private static Dictionary<string, AsyncOperationHandle> instantiatedUniqueObjects = new Dictionary<string, AsyncOperationHandle>();
+        private static Dictionary<string, SceneInstance> loadedScenes = new Dictionary<string, SceneInstance>();
 
         //addressables initialization
         private static List<string> updatableCatalog = new List<string>();
@@ -24,6 +27,10 @@ namespace GATVirtualBooth
         public static event Action UpdateBundleFailed;
         public static event Action UpdateBundleStarted;
         public static event Action UpdateBundleCompleted;
+
+        public static event Action LoadSceneStarted;
+        public static event Action<float> LoadSceneProgress;
+        public static event Action LoadSceneFinished;
 
         public static async Task InitializeAddressables()
         {
@@ -81,6 +88,11 @@ namespace GATVirtualBooth
                     IList<IResourceLocation> resourceLocations;
                     locator.Locate(key, null, out resourceLocations);
 
+                    if (resourceLocations == null)
+                    {
+                        continue;
+                    }
+
                     foreach (var location in resourceLocations)
                     {
                         string primary = location.PrimaryKey;
@@ -100,7 +112,7 @@ namespace GATVirtualBooth
         public static async Task<long> GetDownloadSize()
         {
             RetrievePrimaryKey();
-
+            primaryKeys.ForEach((e) => Debug.Log($"key: {e}"));
             var downloadSizeHandle = Addressables.GetDownloadSizeAsync(primaryKeys);
             await downloadSizeHandle.Task;
 
@@ -152,6 +164,43 @@ namespace GATVirtualBooth
                 Debug.Log($"Fail to instantiate object: {path}");
                 return null;
             }
+        }
+
+        public static async Task LoadScene(string path, LoadSceneMode mode)
+        {
+            float loadSceneProgress = 0f;
+            float activateSceneProgress = 0f;
+
+            LoadSceneStarted?.Invoke();
+
+            var loadSceneHandle = Addressables.LoadSceneAsync(path, mode, false);
+            while(!loadSceneHandle.IsDone)
+            {
+                loadSceneProgress = loadSceneHandle.GetDownloadStatus().Percent;
+                LoadSceneProgress?.Invoke(loadSceneProgress * 0.7f + activateSceneProgress * 0.3f);
+                await Task.Delay(100);
+            }
+
+            var activateScene = loadSceneHandle.Result.ActivateAsync();
+            while (!activateScene.isDone)
+            {
+                activateSceneProgress = activateScene.progress;
+                LoadSceneProgress?.Invoke(loadSceneProgress * 0.7f + activateSceneProgress * 0.3f);
+                await Task.Delay(100);
+            }
+
+            loadedScenes.Add(path, loadSceneHandle.Result);
+            Release(loadSceneHandle);
+
+            LoadSceneFinished?.Invoke();
+        }
+
+        public static async Task UnloadScene(string path)
+        {
+            var unloadSceneHandle = Addressables.UnloadSceneAsync(loadedScenes[path], true);
+            await unloadSceneHandle.Task;
+
+            loadedScenes.Remove(path);
         }
     }
 }

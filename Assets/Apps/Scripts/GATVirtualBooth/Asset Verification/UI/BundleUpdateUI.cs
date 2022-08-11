@@ -32,12 +32,6 @@ namespace GATVirtualBooth.AssetVerification
 
         private void OnDisable()
         {
-            AssetVerification.InitializingAddressables -= ShowInitializingMessage;
-            AssetVerification.CheckingCatalog -= ShowCheckingCatalogMessage;
-            AssetVerification.OnConnectionAvailable -= ShowOnConnectionAvailable;
-            AssetVerification.OnConnectionUnavailable -= ShowOnConnectionUnavailable;
-            AssetVerification.OnDownloadNeeded -= ShowOnDownloadNeeded;
-
             ResourceManager.UpdateBundleStarted -= ShowDownloadProgress;
             ResourceManager.UpdateBundleProgress -= UpdateProgressBar;
             //ResourceManager.UpdateBundleFailed
