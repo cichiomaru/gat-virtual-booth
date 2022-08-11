@@ -47,7 +47,6 @@ namespace GATVirtualBooth.AssetVerification
         private async void ShowOnDownloadNeeded()
         {
             ShowMessage($"Updating game assets ...");
-            await ResourceManager.InstantiateObject("UI/Pop Up/Bundle Update Confirmation.prefab");
         }
 
         private void ShowOnConnectionUnavailable()

@@ -134,7 +134,7 @@ namespace GATVirtualBooth
             Release(downloadHandle);
         }
 
-        public static async Task InstantiateObject(string path)
+        public static async Task<GameObject> InstantiateObject(string path)
         {
             var objectHandle = Addressables.InstantiateAsync(path);
             await objectHandle.Task;
@@ -142,10 +142,12 @@ namespace GATVirtualBooth
             if (objectHandle.Status == AsyncOperationStatus.Succeeded)
             {
                 instantiatedUniqueObjects.Add(path, objectHandle);
+                return objectHandle.Result;
             }
             else
             {
                 Debug.Log($"Fail to instantiate object: {path}");
+                return null;
             }
         }
     }

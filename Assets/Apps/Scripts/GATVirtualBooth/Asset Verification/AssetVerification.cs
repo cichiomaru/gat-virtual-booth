@@ -25,7 +25,15 @@ namespace GATVirtualBooth.AssetVerification
             if (downloadSize > 0)
             {
                 OnDownloadNeeded?.Invoke();
+                ShowUpdatePopUp(downloadSize);
             }
+        }
+
+        private async void ShowUpdatePopUp(long downloadSize)
+        {
+            GameObject updateConfirmationPoUp = await ResourceManager.InstantiateObject("UI/Pop Up/Bundle Update Confirmation.prefab");
+            UpdateConfirmationPopUp updateConfirmationPopUp = updateConfirmationPoUp.GetComponent<UpdateConfirmationPopUp>();
+            updateConfirmationPopUp.SetMessage($"Download additional file for {FileSize.ToMB(downloadSize)} MB?");
         }
 
         private async Task BundleCheck()
