@@ -4,7 +4,7 @@ namespace GATVirtualBooth
 {
     public interface IHideShow
     {
-        public void Hide(GameObject obj);
-        public void Show(GameObject obj);
+        public void Hide();
+        public void Show();
     }
 }
