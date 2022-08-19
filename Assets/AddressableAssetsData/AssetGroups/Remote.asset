@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Unity-Chan
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: afd94ac88fc58184483f23abea656bb6
+    m_Address: Accessory
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d7496dd85ad3746459e2d1cda9b45e67, type: 2}
   m_SchemaSet:
