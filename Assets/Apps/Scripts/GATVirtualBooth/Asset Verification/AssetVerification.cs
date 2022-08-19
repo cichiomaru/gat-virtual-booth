@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using LabGAT.SceneTransition;
 
 namespace GATVirtualBooth.AssetVerification
 {
@@ -13,11 +14,14 @@ namespace GATVirtualBooth.AssetVerification
         [SerializeField] private PopUpConfirmation popUpConfirmation;
         [SerializeField] private PopUpNotice popUpNotice;
 
+        private ISceneTransition sceneTransition;
+
         public event Action InitializingAddressables;
         public event Action CheckingCatalog;
         public event Action OnConnectionAvailable;
         public event Action OnConnectionUnavailable;
         public event Action OnDownloadNeeded;
+        public event Action OnBundleAlreadyUpToDate;
 
         private async void OnStart()
         {
@@ -46,6 +50,7 @@ namespace GATVirtualBooth.AssetVerification
             }
             else
             {
+                OnBundleAlreadyUpToDate?.Invoke();
                 GoToMainMenu();
             }
         }
@@ -109,7 +114,20 @@ namespace GATVirtualBooth.AssetVerification
         {
             await Task.Delay(1000);
             //load next scene
+            await sceneTransition.CloseTransition();
             await ResourceManager.LoadScene("Scenes/Main Menu.unity", LoadSceneMode.Single);
+        }
+
+        private void Awake()
+        {
+            foreach (Canvas canvas in FindObjectsOfType<Canvas>())
+            {
+                if (canvas.GetComponent<ISceneTransition>() != null)
+                {
+                    sceneTransition = canvas.GetComponent<ISceneTransition>();
+                    break;
+                }
+            }
         }
 
         private void Start()

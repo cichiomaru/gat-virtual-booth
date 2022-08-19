@@ -11,6 +11,7 @@ namespace GATVirtualBooth.AssetVerification
     {
         private AssetVerification AssetVerification => FindObjectOfType<AssetVerification>();
 
+        [SerializeField] private Canvas canvas;
         [SerializeField] private TMP_Text messageText;
         [SerializeField] private Slider loadingBar;
         [SerializeField] private TMP_Text loadingProgress;
@@ -23,6 +24,7 @@ namespace GATVirtualBooth.AssetVerification
             AssetVerification.OnConnectionAvailable += ShowOnConnectionAvailable;
             AssetVerification.OnConnectionUnavailable += ShowOnConnectionUnavailable;
             AssetVerification.OnDownloadNeeded += ShowOnDownloadNeeded;
+            AssetVerification.OnBundleAlreadyUpToDate += ShowOnOnBundleAlreadyUpToDate;
 
             ResourceManager.UpdateBundleStarted += ShowDownloadProgress;
             ResourceManager.UpdateBundleProgress += UpdateProgressBar;
@@ -43,6 +45,11 @@ namespace GATVirtualBooth.AssetVerification
             HideDownloadProgress();
         }
 
+        private void ShowOnOnBundleAlreadyUpToDate()
+        {
+            SetMessage($"Assets is up to date.");
+        }
+
         private void ShowDownloadCompleted()
         {
             SetMessage($"Download completed.");
@@ -61,12 +68,12 @@ namespace GATVirtualBooth.AssetVerification
 
         private void ShowDownloadProgress()
         {
-
+            loadingBar.gameObject.SetActive(true);
         }
 
         private void HideDownloadProgress()
         {
-
+            loadingBar.gameObject.SetActive(false);
         }
 
         private void ShowOnDownloadNeeded()
@@ -96,12 +103,12 @@ namespace GATVirtualBooth.AssetVerification
 
         public void Hide()
         {
-
+            canvas.enabled = false;
         }
 
         public void Show()
         {
-
+            canvas.enabled = true;
         }
 
     }

@@ -79,6 +79,20 @@ MonoBehaviour:
         m_Value: CCDBuildData/603ee106-df74-40e4-97a9-257b136e0325/latest
       - m_Id: ee3c2bd8526bacc4e89797ab3709108d
         m_Value: https://a10c2708-df9b-46b0-a163-2ec7819967c6.client-api.unity3dusercontent.com/client_api/v1/buckets/603ee106-df74-40e4-97a9-257b136e0325/release_by_badge/latest/entry_by_path/content/?path=
+    - m_InheritedParent: 
+      m_Id: 611c0198916d6c844a6750e58ddfba6a
+      m_ProfileName: Custom
+      m_Values:
+      - m_Id: f0317bec7a76833478a978acfa6a3374
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: 5b7648d2bb7f4c047986a5a68140dafa
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: 016f1f480366ed64bb7192cb97c46c31
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: d6b9397837176174b8229229fd926ec5
+        m_Value: CCDBuildData/603ee106-df74-40e4-97a9-257b136e0325/latest
+      - m_Id: ee3c2bd8526bacc4e89797ab3709108d
+        m_Value: '{GATVirtualBooth.VirtualBoothUtility.REMOTE_LOAD_PATH}'
     m_ProfileEntryNames:
     - m_Id: f0317bec7a76833478a978acfa6a3374
       m_Name: BuildTarget
@@ -113,7 +127,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f666e9729799f63439631ffee08026b5, type: 2}
   - {fileID: 11400000, guid: 30504e1d7294999428fa935900bee9e5, type: 2}
   - {fileID: 11400000, guid: ad9e923eda2116340add4fe51b848bf0, type: 2}
-  m_ActiveProfileId: fd164cc38e95d4448a9f2ae6bf25b556
+  m_ActiveProfileId: 611c0198916d6c844a6750e58ddfba6a
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}
