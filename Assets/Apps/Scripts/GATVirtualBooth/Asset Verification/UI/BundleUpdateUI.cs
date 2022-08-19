@@ -61,12 +61,12 @@ namespace GATVirtualBooth.AssetVerification
 
         private void ShowDownloadProgress()
         {
-            Show(loadingBar.gameObject);
+
         }
 
         private void HideDownloadProgress()
         {
-            Hide(loadingBar.gameObject);
+
         }
 
         private void ShowOnDownloadNeeded()
@@ -94,14 +94,14 @@ namespace GATVirtualBooth.AssetVerification
             SetMessage($"Initializing ...");
         }
 
-        public void Hide(GameObject obj)
+        public void Hide()
         {
-            obj.SetActive(false);
+
         }
 
-        public void Show(GameObject obj)
+        public void Show()
         {
-            obj.SetActive(true);
+
         }
 
     }

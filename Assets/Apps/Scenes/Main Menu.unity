@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c21b8f1063b7d4eac469a4f8c08064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDuration: 1
+  transitionDuration: 0.5
   leftSide: {fileID: 228776508}
   rightSide: {fileID: 1963930137}
   leftAnchor: {x: -800, y: 0, z: 0}
