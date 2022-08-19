@@ -188,8 +188,10 @@ namespace GATVirtualBooth
                 LoadSceneProgress?.Invoke(loadSceneProgress * 0.7f + activateSceneProgress * 0.3f);
                 await Task.Delay(100);
             }
-
-            loadedScenes.Add(path, loadSceneHandle.Result);
+            if (mode == LoadSceneMode.Additive)
+            {
+                loadedScenes.Add(path, loadSceneHandle.Result);
+            }
             Release(loadSceneHandle);
 
             LoadSceneFinished?.Invoke();
