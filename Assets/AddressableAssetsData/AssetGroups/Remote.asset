@@ -21,8 +21,8 @@ MonoBehaviour:
     m_Address: Unity-Chan
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: afd94ac88fc58184483f23abea656bb6
-    m_Address: Accessory
+  - m_GUID: c6ea56db5b70dc640a5034a96d4aabf5
+    m_Address: Generic Male
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
