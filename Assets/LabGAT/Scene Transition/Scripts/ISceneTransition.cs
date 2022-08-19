@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 namespace LabGAT.SceneTransition {
-    internal interface ISceneTransition {
-        public SceneTransition SceneTransition { get; }
+    public interface ISceneTransition {
+        public Canvas canvas { get; }
+
+        public Task OpenTransition();
+        public Task CloseTransition();
     }
 }
