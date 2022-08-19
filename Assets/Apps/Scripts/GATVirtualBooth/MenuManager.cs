@@ -7,7 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace GATVirtualBooth
 {
-    public class MenuManager : MonoBehaviour
+    public abstract class MenuManager : MonoBehaviour
     {
         public static MenuManager Instance;
         [SerializeField] Transform parent;
@@ -32,20 +32,8 @@ namespace GATVirtualBooth
             widgetStack = new Stack<IWidget>();
 
             GetAllWidget();
+        }
 
-            NumberSet += Test;
-            NumberSet += Test2;
-
-            print(NumberSet?.Invoke("zero"));
-        }
-        private int Test2(string number)
-        {
-            return 1 + 1;
-        }
-        private int Test (string number)
-        {
-            return 1;
-        }
         public void Show(string path)
         {
             if (widgetStack.Contains(widgetList[path]))
@@ -65,7 +53,10 @@ namespace GATVirtualBooth
             foreach(var obj in FindObjectsOfType<GameObject>())
             {
                 IWidget widget = obj.GetComponent<IWidget>();
-                widgetList.Add(widget.Path, widget);
+                if (widget is not null)
+                {
+                    widgetList.Add(widget.Path, widget);                    
+                }
             }
         }
     }
