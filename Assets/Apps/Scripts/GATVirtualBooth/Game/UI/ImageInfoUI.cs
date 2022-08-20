@@ -39,12 +39,6 @@ namespace GATVirtualBooth.Game
             canvas.enabled = true;
         }
 
-        public void Set(string title, Sprite sprite)
-        {
-            SetTitle(title);
-            SetImage(sprite);
-        }
-
         public void SetTitle(string title)
         {
             titleText.text = title;
@@ -55,5 +49,12 @@ namespace GATVirtualBooth.Game
             image.sprite = sprite;
         }
 
+        public void SetContent(DataModel content)
+        {
+            ImageUIDataModel dataModel = (ImageUIDataModel)content;
+
+            SetTitle(dataModel.title);
+            SetImage(dataModel.sprite);
+        }
     }
 }

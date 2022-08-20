@@ -13,6 +13,11 @@ namespace GATVirtualBooth.Game
             throw new System.NotImplementedException();
         }
 
+        public void SetContent(DataModel content)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Show()
         {
             throw new System.NotImplementedException();

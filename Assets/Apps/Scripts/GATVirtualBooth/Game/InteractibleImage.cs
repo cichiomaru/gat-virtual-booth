@@ -6,13 +6,17 @@ namespace GATVirtualBooth.Game
 {
     public class InteractibleImage : MonoBehaviour, IInteractible
     {
-        [SerializeField] private Sprite sprite;
-        [SerializeField] private string title;
+        [SerializeField] private ImageUIDataModel imageUIDataModel;
+
+        private void Awake()
+        {
+            //set data model here
+        }
 
         public void Execute()
         {
             IWidget widget = GameplayMenuManager.instance.Show(GameplayUIPath.ImageInfo);
-            
+            widget.SetContent(imageUIDataModel);
         }
 
         public string GetName()

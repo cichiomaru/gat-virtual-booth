@@ -70,5 +70,10 @@ namespace GATVirtualBooth.Game
         {
             canvas.enabled = true;
         }
+
+        public void SetContent(DataModel content)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
