@@ -1,21 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 namespace GATVirtualBooth.Game
 {
-    public class SettingUI : IWidget
+    public class SettingUI : MonoBehaviour, IHideShow
     {
-        public string Path => "";
+        #region component
+        [SerializeField] private Canvas canvas;
+        [SerializeField] private Button cancelButton;
+        [SerializeField] private Button okButton;
+        [SerializeField] private Slider bgmSlider;
+        [SerializeField] private Slider sfxSlider;
+        #endregion
+
+        #region unity function
+
+        private void Start()
+        {
+            LoadSettingData();
+            Hide();
+        }
+
+        private void Awake()
+        {
+            cancelButton.onClick.AddListener(Cancel);
+            okButton.onClick.AddListener(OK);
+        }
+
+        #endregion
+
+
+        private void LoadSettingData()
+        {
+            bgmSlider.value = PlayerPrefs.GetFloat("bgm", 1f);
+            sfxSlider.value = PlayerPrefs.GetFloat("sfx", 1f);
+        }
+
+        private void SaveSettingData()
+        {
+            PlayerPrefs.SetFloat("bgm", bgmSlider.value);
+            PlayerPrefs.SetFloat("sfx", sfxSlider.value);
+        }
+
+        private void OK()
+        {
+            SaveSettingData();
+            Hide();
+        }
+
+        private void Cancel()
+        {
+            LoadSettingData();
+            Hide();
+        }
 
         public void Hide()
         {
-            throw new System.NotImplementedException();
+            canvas.enabled = false;
         }
 
         public void Show()
         {
-            throw new System.NotImplementedException();
+            canvas.enabled = true;
         }
     }
 }
