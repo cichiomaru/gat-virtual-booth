@@ -5,5 +5,6 @@
 
 
         public void Execute();
+        public string GetName();
     }
 }

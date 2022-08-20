@@ -12,5 +12,10 @@ namespace GATVirtualBooth.Game
         {
 
         }
+
+        public string GetName()
+        {
+            return gameObject.name;
+        }
     }
 }
