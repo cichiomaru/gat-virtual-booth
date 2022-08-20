@@ -7,8 +7,11 @@ using System;
 
 namespace GATVirtualBooth.Game
 {
-    public class SettingUI : MonoBehaviour, IHideShow
+    public class SettingUI : MonoBehaviour, IWidget
     {
+        public string Path => GameplayUIPath.Setting;
+
+
         #region component
         [SerializeField] private Canvas canvas;
         [SerializeField] private Button cancelButton;

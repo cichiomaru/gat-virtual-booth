@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 
 namespace GATVirtualBooth
 {
-    public class PopUpNotice : BasePopUp, IHideShow
+    public class PopUpNotice : BasePopUp
     {
 
         private new void Awake()

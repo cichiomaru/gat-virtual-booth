@@ -7,7 +7,7 @@ using System;
 
 namespace GATVirtualBooth.AssetVerification
 {
-    public class BundleUpdateUI : MonoBehaviour, IHideShow
+    public class BundleUpdateUI : MonoBehaviour
     {
         private AssetVerification AssetVerification => FindObjectOfType<AssetVerification>();
 

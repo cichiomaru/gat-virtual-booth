@@ -6,11 +6,13 @@ namespace GATVirtualBooth.Game
 {
     public class InteractibleImage : MonoBehaviour, IInteractible
     {
-
+        [SerializeField] private Sprite sprite;
+        [SerializeField] private string title;
 
         public void Execute()
         {
-            Logger.Log($"Not implemented", this);
+            IWidget widget = GameplayMenuManager.instance.Show(GameplayUIPath.ImageInfo);
+            
         }
 
         public string GetName()

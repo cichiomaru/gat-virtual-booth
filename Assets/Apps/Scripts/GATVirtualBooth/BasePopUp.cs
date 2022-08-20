@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace GATVirtualBooth
 {
-    public abstract class BasePopUp : MonoBehaviour, IHideShow
+    public abstract class BasePopUp : MonoBehaviour, IPopUp
     {
         [SerializeField] protected Canvas canvas;
         [SerializeField] protected TMP_Text messageText;
