@@ -11,6 +11,5 @@ namespace GATVirtualBooth.Game
 
         public void SetDestination(Vector3 direction);
         public void PositionUpdate();
-        public void Interact(IInteractible interactible);
     }
 }

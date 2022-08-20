@@ -7,23 +7,34 @@ using UnityEngine.AI;
 
 namespace GATVirtualBooth.Game
 {
-    public class Player : MonoBehaviour, IEntity, IAttribute
+    public class Player : MonoBehaviour, IEntity, IAttribute, IInteraction
     {
+        #region components
         //components
         [SerializeField] private InputSO input;
         public NavMeshAgent Agent => GetComponent<NavMeshAgent>();
         public Animator Animator => GetComponentInChildren<Animator>();
+        #endregion
 
+        #region attribute
         //attribute
         public Vector3 MovementDirection { get; set; }
+        public List<IInteractible> Interactibles => new List<IInteractible>();
+        #endregion
 
 
+        #region actions
         //actions
         public event Action<Vector3> OnDirectionSet;
+        #endregion
 
-        public void Interact(IInteractible interactible)
+
+        public void Interact()
         {
-            throw new NotImplementedException();
+            if (Interactibles.Count > 0)
+            {
+                Interactibles[0].Execute();
+            }
         }
 
         public void SetDestination(Vector3 direction)
@@ -36,8 +47,25 @@ namespace GATVirtualBooth.Game
             Agent.SetDestination(transform.position + MovementDirection);
             Animator.SetFloat("speed", MovementDirection.magnitude);
         }
+        
+        public void RegisterInteractible(IInteractible interactible)
+        {
+            if (!Interactibles.Contains(interactible))
+            {
+                Interactibles.Add(interactible);
+            }
+        }
+        
+        public void UnregisterInteractible(IInteractible interactible)
+        {
+            if (Interactibles.Contains(interactible))
+            {
+                Interactibles.Remove(interactible);
+            }
+        }
 
 
+        #region unity functions
         private void Update()
         {
             PositionUpdate();
@@ -52,5 +80,6 @@ namespace GATVirtualBooth.Game
         {
             input.OnDirectionSet -= SetDestination;
         }
+        #endregion
     }
 }
