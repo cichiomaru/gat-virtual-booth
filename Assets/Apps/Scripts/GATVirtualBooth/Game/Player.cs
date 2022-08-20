@@ -17,7 +17,6 @@ namespace GATVirtualBooth.Game
         #endregion
 
         #region attribute
-        //attribute
         public Vector3 MovementDirection { get; set; }
         private List<IInteractible> interactibles = new();
         #endregion
@@ -26,6 +25,8 @@ namespace GATVirtualBooth.Game
         #region actions
         //actions
         public event Action<Vector3> OnDirectionSet;
+        public event Action<IInteractible> OnRegisterInteractible;
+        public event Action<IInteractible> OnUnregisterInteractible;
         #endregion
 
 
@@ -34,6 +35,7 @@ namespace GATVirtualBooth.Game
             if (interactibles.Count > 0)
             {
                 interactibles[0].Execute();
+                Logger.Log($"Interact with {interactibles[0].GetName()}.");
             }
         }
 
@@ -53,6 +55,7 @@ namespace GATVirtualBooth.Game
             if (!interactibles.Contains(interactible))
             {
                 interactibles.Add(interactible);
+                OnRegisterInteractible?.Invoke(interactibles[0]);
                 Logger.Log($"{interactible.GetName()} is nearby.");
             }
         }
@@ -62,6 +65,10 @@ namespace GATVirtualBooth.Game
             if (interactibles.Contains(interactible))
             {
                 interactibles.Remove(interactible);
+
+                IInteractible firstInteractible = interactibles.Count > 0 ? interactibles[0] : null;
+                OnUnregisterInteractible?.Invoke(firstInteractible);
+
                 Logger.Log($"{interactible.GetName()} is out of interaction area.");
             }
         }

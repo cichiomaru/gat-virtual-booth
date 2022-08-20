@@ -10,7 +10,7 @@ namespace GATVirtualBooth.Game
 
         public void Execute()
         {
-
+            Logger.Log($"Not implemented", this);
         }
 
         public string GetName()
