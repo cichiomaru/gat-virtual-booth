@@ -8,14 +8,12 @@ namespace GATVirtualBooth.Game
 {
     public class ImageInfoUI : MonoBehaviour, IWidget
     {
-        #region component
         [SerializeField] private Canvas canvas;
         [SerializeField] private Image image;
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private Button buttonClose;
-        #endregion
 
-        public string Path => GameplayUIPath.ImageInfo;
+        public string Path => GATVirtualBooth.Path.Gameplay.ImageInfo;
 
 
         private void Awake()
@@ -39,22 +37,12 @@ namespace GATVirtualBooth.Game
             canvas.enabled = true;
         }
 
-        public void SetTitle(string title)
-        {
-            titleText.text = title;
-        }
-
-        public void SetImage (Sprite sprite)
-        {
-            image.sprite = sprite;
-        }
-
         public void SetContent(DataModel content)
         {
             ImageUIDataModel dataModel = (ImageUIDataModel)content;
 
-            SetTitle(dataModel.title);
-            SetImage(dataModel.sprite);
+            titleText.text = dataModel.title;
+            image.sprite = dataModel.sprite;
         }
     }
 }

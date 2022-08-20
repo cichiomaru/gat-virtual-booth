@@ -9,8 +9,7 @@ namespace GATVirtualBooth.Game
 {
     public class SettingUI : MonoBehaviour, IWidget
     {
-        public string Path => GameplayUIPath.Setting;
-
+        public string Path => GATVirtualBooth.Path.Gameplay.Setting;
 
         #region component
         [SerializeField] private Canvas canvas;

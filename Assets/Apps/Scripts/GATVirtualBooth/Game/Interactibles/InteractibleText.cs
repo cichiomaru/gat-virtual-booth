@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace GATVirtualBooth.Game
 {
-    public class InteractibleImage : MonoBehaviour, IInteractible
+    public class InteractibleText : MonoBehaviour, IInteractible
     {
-        [SerializeField] private ImageUIDataModel imageUIDataModel;
+        [SerializeField] private TextUIDataModel textUIDataModel;
 
         private void Awake()
         {
-            //set data model here
+            //retrieve data 
         }
 
         public void Execute()
         {
-            IWidget widget = GameplayMenuManager.instance.Show(GameplayUIPath.ImageInfo);
-            widget.SetContent(imageUIDataModel);
+            IWidget widget = GameplayMenuManager.instance.Show(Path.Gameplay.TextInfo);
+            widget.SetContent(textUIDataModel);
         }
 
         public string GetName()
