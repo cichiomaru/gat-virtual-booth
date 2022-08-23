@@ -20,6 +20,13 @@ namespace LightShaft.Scripts
             }
         }
 
+
+        public void PlayVideo()
+        {
+            PlayYoutubeVideo(youtubeUrl);
+        }
+
+
         ///<summary>This function is callback only, only will be called when the on url are ready to use.</summary>
         private void UrlReadyToUse(string urlToUse)
         {

@@ -304,6 +304,7 @@ namespace Unity.VideoHelper
         private float GetPreviewPoint()
         {
             Vector2 screenMousePosition = RectTransformUtility.WorldToScreenPoint(cam, Input.mousePosition);
+
             Vector2 localMousePosition;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(tooltipContainerRect, screenMousePosition, cam, out localMousePosition);
             localMousePosition -= tooltipContainerRect.rect.position;

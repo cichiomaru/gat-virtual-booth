@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using LightShaft.Scripts;
 
 namespace GATVirtualBooth.Game
 {
@@ -11,13 +12,14 @@ namespace GATVirtualBooth.Game
         public string Path => GATVirtualBooth.Path.Gameplay.VideoInfo;
 
         [SerializeField] private Canvas canvas;
-        [SerializeField] private Button closeButton;
-        [SerializeField] TextMeshProUGUI titleText;
+        //[SerializeField] private Button closeButton;
+        //[SerializeField] TextMeshProUGUI titleText;
+        [SerializeField] private YoutubePlayer youtubePlayer;
 
         private void Awake()
         {
             canvas = GetComponent<Canvas>();
-            closeButton.onClick.AddListener(Hide);
+            //closeButton.onClick.AddListener(Hide);
         }
 
         public void Hide()
@@ -29,7 +31,8 @@ namespace GATVirtualBooth.Game
         {
             VideoUIDataModel dataModel = (VideoUIDataModel)content;
 
-            titleText.text = dataModel.title;
+            youtubePlayer.youtubeUrl = dataModel.url;
+            youtubePlayer.PlayVideo();
         }
 
         public void Show()

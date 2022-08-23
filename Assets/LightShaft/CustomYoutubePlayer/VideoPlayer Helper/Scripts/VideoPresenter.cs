@@ -138,7 +138,7 @@ namespace Unity.VideoHelper
 
         private void Update()
         {
-            CheckKeys();
+            //CheckKeys();
 
             if (controller.IsPlaying)
                 Timeline.Position = controller.NormalizedTime;
