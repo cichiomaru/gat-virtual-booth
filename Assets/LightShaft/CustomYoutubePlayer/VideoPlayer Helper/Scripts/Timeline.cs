@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 namespace Unity.VideoHelper
 {
@@ -303,7 +304,7 @@ namespace Unity.VideoHelper
 
         private float GetPreviewPoint()
         {
-            Vector2 screenMousePosition = RectTransformUtility.WorldToScreenPoint(cam, Input.mousePosition);
+            Vector2 screenMousePosition = RectTransformUtility.WorldToScreenPoint(cam, Mouse.current.position.ReadValue());
 
             Vector2 localMousePosition;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(tooltipContainerRect, screenMousePosition, cam, out localMousePosition);

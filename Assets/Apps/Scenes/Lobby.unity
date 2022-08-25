@@ -2434,10 +2434,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6399318266055280536, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6399318266055280537, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2525,30 +2521,6 @@ PrefabInstance:
     - target: {fileID: 6399318266055280547, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
       propertyPath: m_Name
       value: Video Info
-      objectReference: {fileID: 0}
-    - target: {fileID: 6399318266142599917, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6399318266142599917, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6399318266142599917, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6399318266142599917, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6399318266142599917, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6399318266142599917, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6399318266195455647, guid: a2a129d4e519a3a469bc73241dd30b12, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3878,7 +3850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoUIDataModel:
     title: Mario Kart
-    url: https://www.youtube.com/watch?v=HMvKEpPuQw0
+    url: https://www.youtube.com/watch?v=pq59A7m1o8E
 --- !u!1 &2071236727
 GameObject:
   m_ObjectHideFlags: 0

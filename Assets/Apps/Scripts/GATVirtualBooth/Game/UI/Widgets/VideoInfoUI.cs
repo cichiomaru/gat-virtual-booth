@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using LightShaft.Scripts;
+using UnityEngine;
+using LabGAT.InputSystem;
 
 namespace GATVirtualBooth.Game
 {
@@ -11,6 +8,7 @@ namespace GATVirtualBooth.Game
     {
         public string Path => GATVirtualBooth.Path.Gameplay.VideoInfo;
 
+        [SerializeField] private InputSO input;
         [SerializeField] private Canvas canvas;
         //[SerializeField] private Button closeButton;
         //[SerializeField] TextMeshProUGUI titleText;
@@ -20,11 +18,24 @@ namespace GATVirtualBooth.Game
         {
             canvas = GetComponent<Canvas>();
             //closeButton.onClick.AddListener(Hide);
+            input.OnMenuClosed += CloseUI;
+        }
+
+        private void CloseUI()
+        {
+            GameplayMenuManager.instance.Hide(Path);
         }
 
         public void Hide()
         {
+            Screen.orientation = ScreenOrientation.Portrait;
             canvas.enabled = false;
+        }
+
+        public void Show()
+        {
+            canvas.enabled = true;
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
         }
 
         public void SetContent(DataModel content)
@@ -35,9 +46,9 @@ namespace GATVirtualBooth.Game
             youtubePlayer.PlayVideo();
         }
 
-        public void Show()
+        private void OnApplicationQuit()
         {
-            canvas.enabled = true;
+            Screen.orientation = ScreenOrientation.Portrait;
         }
     }
 }

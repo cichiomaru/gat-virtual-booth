@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,11 @@ namespace GATVirtualBooth.Game
         {
             widgets[path].Show();
             return widgets[path];
+        }
+
+        internal void Hide(string path)
+        {
+            widgets[path].Hide();
         }
     }
 }

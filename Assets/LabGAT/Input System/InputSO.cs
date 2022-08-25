@@ -12,6 +12,8 @@ namespace LabGAT.InputSystem
         private CustomInput input;
 
         public event Action<Vector3> OnDirectionSet;
+        public event Action OnMenuClosed;
+
         private Vector3 direction = new Vector3();
 
 
@@ -37,10 +39,19 @@ namespace LabGAT.InputSystem
         {
             if (context.phase == InputActionPhase.Performed || context.phase == InputActionPhase.Canceled)
             {
+                Debug.Log($"Movement");
                 direction.x = context.ReadValue<Vector2>().x;
                 direction.z = context.ReadValue<Vector2>().y;
 
                 OnDirectionSet?.Invoke(direction);
+            }
+        }
+
+        public void OnCloseMenu(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                OnMenuClosed?.Invoke();
             }
         }
     }
