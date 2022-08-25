@@ -14,7 +14,7 @@ namespace GATVirtualBooth.Game
         #endregion
 
         #region attribute
-        public Vector3 MovementDirection { get; set; }
+        public Vector3 movementDirection = new();
         private List<IInteractible> interactibles = new();
         #endregion
 
@@ -36,15 +36,16 @@ namespace GATVirtualBooth.Game
             }
         }
 
-        public void SetDestination(Vector3 direction)
+        public void SetDirection(Vector3 direction)
         {
-            MovementDirection = direction;
+            movementDirection.x = direction.x;
+            movementDirection.z = direction.y;
         }
 
         public void PositionUpdate()
         {
-            Agent.SetDestination(transform.position + MovementDirection);
-            Animator.SetFloat("speed", MovementDirection.magnitude);
+            Agent.SetDestination(transform.position + movementDirection);
+            Animator.SetFloat("speed", movementDirection.magnitude);
         }
         
         public void RegisterInteractible(IInteractible interactible)
