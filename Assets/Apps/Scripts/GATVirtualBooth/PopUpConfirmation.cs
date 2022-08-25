@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using System.Threading.Tasks;
-using TMPro;
 
 namespace GATVirtualBooth.AssetVerification
 {

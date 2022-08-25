@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LabGAT.InputSystem;
 using System;
 using UnityEngine.AI;
 
@@ -10,14 +9,12 @@ namespace GATVirtualBooth.Game
     public class Player : MonoBehaviour, IEntity, IAttribute, IInteraction
     {
         #region components
-        //components
-        [SerializeField] private InputSO input;
         public NavMeshAgent Agent => GetComponent<NavMeshAgent>();
         public Animator Animator => GetComponentInChildren<Animator>();
         #endregion
 
         #region attribute
-        public Vector3 MovementDirection { get; set; }
+        public Vector3 movementDirection = new();
         private List<IInteractible> interactibles = new();
         #endregion
 
@@ -39,15 +36,16 @@ namespace GATVirtualBooth.Game
             }
         }
 
-        public void SetDestination(Vector3 direction)
+        public void SetDirection(Vector3 direction)
         {
-            MovementDirection = direction;
+            movementDirection.x = direction.x;
+            movementDirection.z = direction.y;
         }
 
         public void PositionUpdate()
         {
-            Agent.SetDestination(transform.position + MovementDirection);
-            Animator.SetFloat("speed", MovementDirection.magnitude);
+            Agent.SetDestination(transform.position + movementDirection);
+            Animator.SetFloat("speed", movementDirection.magnitude);
         }
         
         public void RegisterInteractible(IInteractible interactible)
@@ -78,16 +76,6 @@ namespace GATVirtualBooth.Game
         private void Update()
         {
             PositionUpdate();
-        }
-
-        private void OnEnable()
-        {
-            input.OnDirectionSet += SetDestination;
-        }
-
-        private void OnDisable()
-        {
-            input.OnDirectionSet -= SetDestination;
         }
         #endregion
     }
