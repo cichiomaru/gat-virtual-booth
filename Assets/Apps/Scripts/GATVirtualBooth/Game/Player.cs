@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LabGAT.InputSystem;
 using System;
 using UnityEngine.AI;
 
@@ -10,8 +9,6 @@ namespace GATVirtualBooth.Game
     public class Player : MonoBehaviour, IEntity, IAttribute, IInteraction
     {
         #region components
-        //components
-        [SerializeField] private InputSO input;
         public NavMeshAgent Agent => GetComponent<NavMeshAgent>();
         public Animator Animator => GetComponentInChildren<Animator>();
         #endregion
@@ -78,16 +75,6 @@ namespace GATVirtualBooth.Game
         private void Update()
         {
             PositionUpdate();
-        }
-
-        private void OnEnable()
-        {
-            input.OnDirectionSet += SetDestination;
-        }
-
-        private void OnDisable()
-        {
-            input.OnDirectionSet -= SetDestination;
         }
         #endregion
     }
