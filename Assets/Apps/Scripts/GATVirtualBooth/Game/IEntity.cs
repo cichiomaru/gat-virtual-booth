@@ -9,7 +9,7 @@ namespace GATVirtualBooth.Game
         public Animator Animator { get; }
         public NavMeshAgent Agent { get; }
 
-        public void SetDestination(Vector3 direction);
+        public void SetDirection(Vector3 direction);
         public void PositionUpdate();
     }
 }
