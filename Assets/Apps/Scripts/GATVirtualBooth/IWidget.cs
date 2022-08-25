@@ -6,5 +6,6 @@
 
         public void Hide();
         public void Show();
+        public void SetContent(DataModel content);
     }
 }
