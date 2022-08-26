@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Unity.VideoHelper.Editor
 {
+#if UNITY_EDITOR
     public class AddVideoTemplateEditor : EditorWindow
     {
         private const string TemplatePath = "Assets/VideoPlayer Helper/Prefabs/Template.prefab";
@@ -20,4 +21,5 @@ namespace Unity.VideoHelper.Editor
             }
         }
     }
+#endif
 }

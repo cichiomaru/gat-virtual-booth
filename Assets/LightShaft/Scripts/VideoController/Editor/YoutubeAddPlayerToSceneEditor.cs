@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
 public class YoutubeAddPlayerToSceneEditor : EditorWindow
 {
 
@@ -26,3 +27,4 @@ public class YoutubeAddPlayerToSceneEditor : EditorWindow
         GameObject.Instantiate((GameObject)Resources.Load("Prefabs/YoutubePlayer", typeof(GameObject)));
     }
 }
+#endif

@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 /// <summary>
 /// Based on: https://forum.unity.com/threads/draw-a-field-only-if-a-condition-is-met.448855/
 /// </summary>
@@ -72,3 +73,4 @@ public class DrawIfPropertyDrawer : PropertyDrawer
     }
 
 }
+#endif
